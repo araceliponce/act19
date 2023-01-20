@@ -1,0 +1,44 @@
+<section class=" p-5">
+
+  <div class="alert alert-dismissible alert-light">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <p>Act. asíncrona: Crea una aplicación en Angular que permita consumir un API y como resultado muestre unas tarjetas</p>
+  </div>
+
+  <h1 class="text-center">Buscador de discografía</h1>
+
+  <label for="inputQuery">Ingresa un artista:</label>
+  <section class="input-group mb-3">
+    <input autofocus type="text" [(ngModel)]="searchQuery" id="inputQuery" class="form-control">
+    <button type="button" (click)="homeGetDisco()" class="btn btn-success">BUSCAR</button>
+  </section>
+
+
+  <p class="d-none">{{verdaderosDatos |json }}</p>
+  <section *ngIf="allOk==true">
+
+    <section *ngFor="let item of verdaderosDatos" class="card bg-secondary my-2 rounded p-3">
+      <p class="fs-2">{{item.strAlbum}}</p>
+      <p>{{item.intYearReleased}}</p>
+    </section>
+
+  </section>
+</section>
+
+<style>
+  input {
+    font-size: 1.5rem;
+  }
+
+  .card {
+    line-height: 1;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .card>* {
+    margin: 0;
+  }
+</style>
